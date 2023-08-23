@@ -49,7 +49,7 @@ module.exports = {
     async updateThought(req, res) {
         try {
             const thought = await Thoughts.findOneAndUpdate(
-                { _id: req.params.ThoughtId },
+                { _id: req.params.thoughtId },
                 { $set: req.body },
                 { runValidators: true, new: true }
             );
@@ -88,7 +88,7 @@ module.exports = {
       async removeReaction(req, res) {
         try {
           const thought = await Thoughts.findOneAndUpdate(
-            { _id: req.params.userId },
+            { _id: req.params.thoughtId },
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
             { runValidators: true, new: true }
           );
